@@ -1,0 +1,195 @@
+:root{
+    --transition: all 0.3s linear;
+    --spacing: 0.1em;
+    --radius: 0.25em;
+    --light-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --dark-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    --max-width: 1170px;
+    --fix-width: 620px;
+    --header1: 3em;
+    --header2: 2em;
+    --header3: 1.3em;
+    --header4: 0.9em;
+    /* color */
+    --clr-primary: #2244ff;
+    --clr-secondary: #ccc;
+    --clr-danger: #ff2200;
+    --clr-dark: #222;
+    --clr-green: #15ff00;
+    --clr-white: #fff;
+}
+
+/* 
+============
+Global Style
+============ 
+*/
+
+*,::after,::before{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--clr-secondary);
+    line-height: 1.5;
+    font-size: 0.875em;
+}
+
+ul{ list-style-type: none; }
+a { text-decoration: none; }
+h1,h2,h3,h4{
+    letter-spacing: var(--spacing);
+}
+
+h1 { font-size: var(--header1); }
+h2 { font-size: var(--header2); }
+h3 { font-size: var(--header3); }
+h4 { font-size: var(--header4); }
+p{
+    color: var(--clr-dark);
+    margin-bottom: 1.25em;
+}
+
+/* 
+=========
+container
+========= 
+*/
+
+.container{
+    width: 90vw;
+    margin: 5em auto;
+    max-width: var(--max-width);
+}
+
+@media screen and (min-width:992px) {
+    .container{
+        width: 95vw;
+    }
+}
+
+/* 
+---------
+slider
+---------
+ */
+
+ .title{
+     text-align: center;
+     margin-bottom: 2em;
+ }
+
+ .title h3{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-weight: 500;
+     text-transform: uppercase;
+ }
+
+ .section-center{
+     margin: 0 auto;
+     margin-top: 4em;
+     width: 100%;
+     height: 450px;
+     text-align: center;
+     position: relative;
+     display: flex;
+     overflow: hidden;
+ }
+
+ .user-img{
+     width: 250px;
+     height: 250px;
+     /* border-radius: 50%; */
+     margin-bottom: 1em;
+     object-fit: cover;
+     border: 3px solid var(--clr-dark);
+     box-shadow: var(--dark-shadow);
+     /* z-index: -999; */
+ }
+
+ .position h4{
+     text-transform: uppercase;
+     margin-bottom: 0.75em;
+     color:var(--clr-danger);
+ }
+
+ .text{
+     max-width: 35em;
+     margin: 0 auto;
+     margin-top: 2em;
+     line-height: 2;
+     color: var(--clr-dark);
+ }
+
+/* 
+================
+control button
+================
+ */
+
+
+ .prev,
+ .next{
+     position: absolute;
+     top: 200px;
+     transform: translate(-50%);
+     background: var(--clr-green);
+     width: 20px;
+     height: 20px;
+     text-align: center;
+     display: grid;
+     font-size: 1em;
+     font-weight: bold;
+     place-items: center;
+     border-radius: var(--radius);
+     cursor: pointer;
+     transition: var(--transition);
+     border: none;
+     outline: none;
+ }
+
+ .prev:hover,
+ .next:hover{
+     background: var(--clr-danger);
+ }
+
+ .prev{
+     left: 10px;
+ }
+
+ .next{
+     right: 0;
+ }
+
+/*  
+ -------
+  slide
+ ------- 
+ */
+
+ article{
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     opacity: 0;
+     transition: var(--transition);
+ }
+
+ article.activeSlide{
+     opacity: 1;
+     transform: translateX(0);
+ }
+
+ article.nextSlide{
+    transform: translateX(100%);
+}
+
+article.lastSlide{
+    transform: translateX(-100%);
+}
